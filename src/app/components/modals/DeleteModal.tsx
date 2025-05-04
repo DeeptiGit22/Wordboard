@@ -18,12 +18,12 @@ export default function DeleteModal({
 				<div className='flex justify-end gap-4 mt-6'>
 					<button
 						onClick={onClose}
-						className='px-4 py-2 rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100'>
+						className='px-4 py-2 rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100 cursor-pointer'>
 						Cancel
 					</button>
 					<button
 						onClick={onConfirm}
-						className='px-4 py-2 rounded-md bg-red-600 text-white hover:bg-red-700'>
+						className='px-4 py-2 rounded-md bg-[#C63C51] text-white hover:[#C63C51] cursor-pointer'>
 						Delete
 					</button>
 				</div>

@@ -34,7 +34,7 @@ const LoginForm = () => {
 		if (user) {
 			dispatch(logout());
 		}
-	}, [dispatch, user]);
+	}, []);
 
 	const handleLogin = (values: SetUserType) => {
 		const user = users.find(
@@ -43,6 +43,8 @@ const LoginForm = () => {
 		if (user) {
 			dispatch(startLoading());
 			dispatch(login({ username: user.username, role: user.role }));
+			console.log("Login successful", user);
+			
 			router.push("/dashboard");
 			dispatch(stopLoading());
 		} else {
