@@ -19,7 +19,6 @@ import InputField from "@/app/components/elements/inputField";
 import { LoginSchema } from "@/app/schemas/loginSchema";
 import PasswordToggle from "@/app/components/hoc/passwordToggle";
 
-
 const LoginForm = () => {
 	const router = useRouter();
 
@@ -32,24 +31,25 @@ const LoginForm = () => {
 	useEffect(() => {
 		dispatch(fetchUsers());
 		if (user) {
+			dispatch(startLoading());
 			dispatch(logout());
+			dispatch(stopLoading());
 		}
 	}, []);
 
 	const handleLogin = (values: SetUserType) => {
+		dispatch(startLoading());
+
 		const user = users.find(
 			(u) => u.username === values.username && u.password === values.password
 		);
 		if (user) {
-			dispatch(startLoading());
 			dispatch(login({ username: user.username, role: user.role }));
-			console.log("Login successful", user);
-			
 			router.push("/dashboard");
-			dispatch(stopLoading());
 		} else {
 			alert("Invalid credentials");
 		}
+		dispatch(stopLoading());
 	};
 	return (
 		<section className='w-full h-screen flex'>
