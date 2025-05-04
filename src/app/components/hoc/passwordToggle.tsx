@@ -1,11 +1,12 @@
-import { InputFieldType } from "@/app/types/elements";
-import Image from "next/image";
 import React, { useState } from "react";
+import Image from "next/image";
+import { InputFieldType } from "@/app/types/elements";
+
 
 const PasswordToggle = (
 	WrappedComponent: React.ComponentType<InputFieldType>
 ) => {
-	return (props: InputFieldType) => {
+	const PasswordToggleComponent: React.FC<InputFieldType> = (props) => {
 		const [isHidden, setIsHidden] = useState(true);
 
 		const handleToggle = () => {
@@ -26,6 +27,9 @@ const PasswordToggle = (
 			</div>
 		);
 	};
+
+	PasswordToggleComponent.displayName = "PasswordToggleComponent";
+	return PasswordToggleComponent;
 };
 
 export default PasswordToggle;

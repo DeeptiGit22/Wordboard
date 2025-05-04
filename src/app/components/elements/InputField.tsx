@@ -31,7 +31,7 @@ const InputField = ({
 				onChange={handleChange}
 				onBlur={handleBlur}
 				placeholder={placeholder}
-				max={max}
+				maxLength={max}
 				className={`focus:outline-none w-full border rounded-md h-[45px] border-[#DED2D9] text-black px-[10px] placeholder: text error
             ? "border-red-500 focus:ring-red-500"
             : "border-gray-300 focus:ring-blue-500"`}

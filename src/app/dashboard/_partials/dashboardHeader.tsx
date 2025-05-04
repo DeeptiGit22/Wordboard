@@ -18,19 +18,19 @@ const DashboardHeader = () => {
 				<p className='pl-2 text-[20px] font-bold'>Workboard</p>
 			</div>
 			<div className='w-[40%] h-full flex items-center justify-end relative'>
-				<div
+				<button
 					className='bg-[#7F265B] text-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer'
 					onClick={() => setShowDropdown(!showDropdown)}>
 					{user ? Capitalize(user.username.slice(0, 1)) : "U"}
-				</div>
+				</button>
 
 				{showDropdown && (
 					<>
-						<div
+						<button
 							className='fixed inset-0 bg-black opacity-0'
-							onClick={() => setShowDropdown(false)}></div>
+							onClick={() => setShowDropdown(false)}></button>
 						<div className='absolute top-[52px] right-0 bg-white p-3 min-w-[100px] rounded-xl shadow-md'>
-							<div
+							<button
 								className='flex items-center justify-between cursor-pointer'
 								onClick={() => dispatch(logout())}>
 								<p className='pr-4 text-[#525252] font-medium'>Logout</p>
@@ -40,7 +40,7 @@ const DashboardHeader = () => {
 									width={25}
 									height={25}
 								/>
-							</div>
+							</button>
 						</div>
 					</>
 				)}

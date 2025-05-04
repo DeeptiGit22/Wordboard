@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@/app/lib/store/store';
+import { RootState } from '@/app/store/store';
 
 interface LoaderState {
     loading: boolean;

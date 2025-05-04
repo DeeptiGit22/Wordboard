@@ -1,10 +1,16 @@
 import Image from "next/image";
-
 import { Capitalize } from "@/app/constant/config";
 import { TableProps } from "@/app/types/dashboard";
 import { Task } from "@/app/types/tasks";
 
 const Table = ({ data, handleEdit, handleDelete, user }: TableProps) => {
+
+		const getStatusClass = (status: string) => {
+			if (status === "pending") return "bg-[#C63C51]";
+			if (status === "in-progress") return "bg-[#FFA24C]";
+			if (status === "done") return "bg-[#86A788]";
+			return "";
+		};
 	return (
 		<div className='overflow-x-scroll'>
 			<table className='min-w-full  '>
@@ -41,15 +47,9 @@ const Table = ({ data, handleEdit, handleDelete, user }: TableProps) => {
 							</td>
 							<td className={"px-4 py-2 min-w-[150px]"}>
 								<p
-									className={`${
-										task.status === "pending"
-											? "bg-[#C63C51]"
-											: task.status === "in-progress"
-											? "bg-[#FFA24C]"
-											: task.status === "done"
-											? "bg-[#86A788]"
-											: ""
-									} text-white py-2 px-4 rounded-3xl text-center w-[150px]`}>
+									className={`${getStatusClass(
+										task.status
+									)} text-white py-2 px-4 rounded-3xl text-center w-[150px]`}>
 									{Capitalize(task.status)}
 								</p>
 							</td>
@@ -73,10 +73,12 @@ const Table = ({ data, handleEdit, handleDelete, user }: TableProps) => {
 									<button
 										className='cursor-pointer'
 										onClick={() => handleDelete(task)}>
-										<img
+										<Image
 											src='/assets/trash.svg'
 											alt='Delete'
 											className='w-5 h-5 inline-block'
+											width={25}
+											height={25}
 										/>
 									</button>
 								)}

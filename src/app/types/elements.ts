@@ -58,4 +58,5 @@ export interface TaskModalProps {
 	heading: string;
 	modalType: string;
 	task?: Task;
+	role?: string;
 }

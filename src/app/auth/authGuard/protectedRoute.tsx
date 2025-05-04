@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 
-import { RootState } from "@/app/lib/store/store";
+import { RootState } from "@/app/store/store";
 import { AuthGuardType } from "@/app/types/auth";
 
 
@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children, allowedRoles }: AuthGuardType) => {
 		} else if (!allowedRoles.includes(user.role)) {
 			router.replace("/unauthorized");
 		}
-	}, [user]);
+	}, [user, allowedRoles, router]);
 
 	if (!user || !allowedRoles.includes(user.role)) {
 		return null;

@@ -1,5 +1,4 @@
 import { Formik } from "formik";
-import * as Yup from "yup";
 
 import InputField from "@/app/components/elements/inputField";
 import SelectField from "@/app/components/elements/selectField";
@@ -8,6 +7,7 @@ import TextAreaField from "@/app/components/elements/textAreaField";
 import { ASSIGNEE, STATUS } from "@/app/constant/config";
 import { TaskModalProps } from "@/app/types/elements";
 import { TaskSchema } from "@/app/schemas/taskSchema";
+import Image from "next/image";
 
 
 export default function TaskModal({
@@ -17,8 +17,12 @@ export default function TaskModal({
 	onSubmit,
 	modalType,
 	task,
+	role
 }: TaskModalProps) {
 	if (!isOpen) return null;
+
+	console.log(role);
+	
 
 	const initialValues =
 		modalType === "edit" && task
@@ -34,16 +38,16 @@ export default function TaskModal({
 	return (
 		isOpen && (
 			<div className='fixed inset-0 z-50 flex'>
-				<div
+				<button
 					className='fixed inset-0 bg-black opacity-50'
-					onClick={onClose}></div>
+					onClick={onClose}></button>
 				<div className='ml-auto h-full w-full max-w-md bg-white shadow-xl z-50 p-6 overflow-y-scroll'>
 					<div className='flex items-center justify-between mb-4'>
 						<h2 className='text-[24px] font-bold'>{heading}</h2>
 						<button
 							onClick={onClose}
 							className='text-[#7F265B] font-semibold cursor-pointer'>
-							<img src='/assets/close.svg' alt='close' width={20} height={20} />
+							<Image src='/assets/close.svg' alt='close' width={20} height={20} />
 						</button>
 					</div>
 					<div>
@@ -89,7 +93,7 @@ export default function TaskModal({
 										cls='mt-4'
 										max={200}
 									/>
-									{modalType == "add" && (
+									{(modalType == "add" || (modalType == 'edit' && role == 'admin' ) )&& (
 										<div className='mt-4'>
 											<SelectField
 												options={ASSIGNEE}
