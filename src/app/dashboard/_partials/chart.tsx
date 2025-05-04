@@ -57,7 +57,7 @@ const ChartsView = ({ data }: ChartProps) => {
 	};
 
 	return (
-		<div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+		<div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-6'>
 			<HighchartsReact highcharts={Highcharts} options={statusChartOptions} />
 			<HighchartsReact highcharts={Highcharts} options={assigneeChartOptions} />
 		</div>

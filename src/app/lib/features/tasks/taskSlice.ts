@@ -16,6 +16,7 @@ const taskSlice = createSlice({
                 state.tasks = tasks;
             } else if (role === 'user') {
                 state.tasks = tasks.filter(task => task.assignee === username);
+                localStorage.setItem('tasks', JSON.stringify(state.tasks));
             }
         },
         addTask(state, action: PayloadAction<Task>) {
@@ -26,6 +27,7 @@ const taskSlice = createSlice({
                 id: newId,
             };
             state.tasks.push(newTask);
+            localStorage.setItem('tasks', JSON.stringify(state.tasks));
         },
         editTask(state, action: PayloadAction<Task>) {
             const taskIndex = state.tasks.findIndex((task) => task.id === action.payload.id);
@@ -35,9 +37,11 @@ const taskSlice = createSlice({
                     ...action.payload,
                 };
             }
+            localStorage.setItem('tasks', JSON.stringify(state.tasks));
         },
         deleteTask(state, action: PayloadAction<number | undefined>) {
             state.tasks = state.tasks.filter(task => task.id !== action.payload);
+            localStorage.setItem('tasks', JSON.stringify(state.tasks));
         },
 
     },
