@@ -1,10 +1,11 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export default function NotFound() {
 	return (
 		<div className='flex flex-col items-center justify-center min-h-screen text-center p-4'>
-			<h1 className='text-4xl font-bold text-red-600'>404 - Page Not Found</h1>
-			<p className='text-gray-700 mt-2'>
-				Sorry the page youre looking for does not exist.
-			</p>
+			<Image src={"/assets/not-found.jpg"} alt={"not found"} width={500} height={500} />
+<Link className="text-[#525252] font-medium bg-gray-100 px-4 py-2 rounded-xl cursor-pointer" href={"/"}>Back to Login</Link>
 		</div>
 	);
 }

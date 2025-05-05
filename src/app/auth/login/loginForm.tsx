@@ -52,7 +52,7 @@ const LoginForm = () => {
 		dispatch(stopLoading());
 	};
 	return (
-		<section className='w-full h-screen flex'>
+		<section className='w-full h-screen flex overflow-y-hidden'>
 			<div className='w-[60%] h-full xl:flex hidden'>
 				<div className="w-full h-full bg-[url('/assets/login-bg.jpeg')] bg-cover bg-center"></div>
 			</div>
