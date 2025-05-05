@@ -2,9 +2,11 @@ import * as Yup from "yup";
 
 export const LoginSchema = Yup.object().shape({
     username: Yup.string()
+        .trim()
         .min(3, "Invalid username")
         .required("Username is required"),
     password: Yup.string()
+        .trim()
         .min(6, "Password must be at least 6 characters")
         .max(20, "Password cannot exceed 20 characters")
         .matches(/[a-z]/, "Password must contain at least one lowercase letter")
